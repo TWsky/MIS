@@ -1,0 +1,35 @@
+<div class="container">
+  <header>
+    <h1>MIS 討論版 BETA</h1>
+  </header>
+  <hr/>
+  <nav>
+    <ul>
+      <li><a href="/post">home</a></li>
+      <li><a href="/post/create">create</a></li>
+      <li><a href="/about">about</a></li>
+    </ul>
+  </nav>
+  <hr>
+  <% if (info = req.flash("info")) { %>
+  <div>
+    <%= info %>
+  </div>
+  <% } %>
+  
+  <% posts.forEach(function(post, index) { %>
+  <article>
+    <h2><%= post.title %></h2>
+    <div class="user">
+      <%= post.user %>s
+    </div>
+    <div class="content">
+      <%= post.content %>
+    </div>
+    <div class="link">
+      <a href="/post/<%=post.id%>">link to <%=post.title%></a>
+    </div>
+  </article>
+  <hr>
+  <% }); %>
+</div>
